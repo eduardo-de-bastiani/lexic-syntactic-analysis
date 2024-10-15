@@ -18,17 +18,11 @@ RPAREN = [)]
 
 %%
 
-<YYINITIAL> {
 
-    "id"        {return new Symbol(Sym.ID);}
-    "plus"      {return new Symbol(Sym.PLUS);}
-    "minus"     {return new Symbol(Sym.MINUS);}
-    "times"     {return new Symbol(Sym.TIMES);}
-    "divide"    {return new Symbol(Sym.DIVIDE);}
-    "lparen"    {return new Symbol(Sym.LPAREN);}
-    "rparen"    {return new Symbol(Sym.RPAREN);}
-}
-
-<<EOF>> { return new Symbol( Sym.EOF ); }
-
-[^] { throw new Error("Illegal character: "+yytext()+" at line "+(yyline+1)+", column "+(yycolumn+1) ); }
+    {id}        {return new Symbol(Sym.ID, yytext());}
+    {plus}      {return new Symbol(Sym.PLUS, yytext());}
+    {minus}     {return new Symbol(Sym.MINUS, yytext());}
+    {times}     {return new Symbol(Sym.TIMES, yytext());}
+    {divide}    {return new Symbol(Sym.DIVIDE), yytext();}
+    {lparen}    {return new Symbol(Sym.LPAREN, yytext());}
+    {rparen}    {return new Symbol(Sym.RPAREN, yytext());}
