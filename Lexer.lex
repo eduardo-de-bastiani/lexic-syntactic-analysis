@@ -1,24 +1,25 @@
-import java_cup.runtime.Symbol;
-
 %%
+
+%class Lexer
+%unicode
 %cup
-%debug
 
-ID = "id"
-PLUS = "+"
-MINUS = "-"
-TIMES = "*"
-DIVIDE = "/"
-LPAREN = "("
-RPAREN = ")"
+%{
+
+  int num;
+%}
+
+DIGIT = [0-9]
 
 %%
 
-{ID} { return new Symbol(Sym.ID); }
-{PLUS} { return new Symbol(Sym.PLUS); }
-{MINUS} { return new Symbol(Sym.MINUS); }
-{TIMES} { return new Symbol(Sym.TIMES); }
-{DIVIDE} { return new Symbol(Sym.DIVIDE); }
-{LPAREN} { return new Symbol(Sym.LPAREN); }
-{RPAREN} { return new Symbol(Sym.RPAREN); }
-".|\n" { return new Symbol(Sym.EOF, yyline, yycolumn, yytext()); }
+"+"           { return sym.PLUS; }
+"-"           { return sym.MINUS; }
+"*"           { return sym.TIMES; }
+"/"           { return sym.DIVIDE; }
+"("           { return sym.LPAREN; }
+")"           { return sym.RPAREN; }
+{DIGIT}+      { num = Integer.parseInt(yytext()); return sym.NUMBER; }
+[ \t\n\r]+    { /* Ignorar espaços em branco */ }
+
+.             { System.err.println("Caractere inválido: " + yytext()); }
