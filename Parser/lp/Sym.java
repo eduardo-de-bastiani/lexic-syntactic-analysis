@@ -4,7 +4,7 @@
 //----------------------------------------------------
 
 /** CUP generated class containing symbol constants. */
-public class Sym {
+public class sym {
   /* terminals */
   public static final int MINUS = 3;
   public static final int DIVIDE = 5;

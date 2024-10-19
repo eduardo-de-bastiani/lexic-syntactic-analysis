@@ -19,15 +19,15 @@ precedence left TIMES, DIVIDE;
 start with E;
 
 E ::=
-    E PLUS T {: RESULT = (int) $1 + (int) $3; :}
-    | E MINUS T {: RESULT = (int) $1 - (int) $3; :}
-    | T {: RESULT = $1; :};
+ E PLUS T {: RESULT = (int) $1 + (int) $3; :}
+ | E MINUS T {: RESULT = (int) $1 - (int) $3; :}
+ | T {: RESULT = $1; :};
 
 T ::=
-    T TIMES F {: RESULT = (int) $1 * (int) $3; :}
-    | T DIVIDE F {: RESULT = (int) $1 / (int) $3; :}
-    | F {: RESULT = $1; :};
+ T TIMES F {: RESULT = (int) $1 * (int) $3; :}
+ | T DIVIDE F {: RESULT = (int) $1 / (int) $3; :}
+ | F {: RESULT = $1; :};
 
 F ::=
-    LPAREN E RPAREN {: RESULT = $2; :}
-    | ID {: RESULT = Integer.parseInt($1); :};
+ LPAREN E RPAREN {: RESULT = $2; :}
+ | ID {: RESULT = Integer.parseInt($1); :};
