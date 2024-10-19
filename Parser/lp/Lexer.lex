@@ -1,6 +1,6 @@
 import java_cup.runtime.Symbol;
 
-class sym {
+class Sym {
   public static final int error = -1;
   public static final int EOF = 0;
   public static final int ID = 1;
@@ -27,10 +27,10 @@ RPAREN = ")"
 
 %%
 
-{ID} { return new Symbol(sym.ID, yytext());}
-{PLUS} { return new Symbol(sym.PLUS, yytext());}
-{MINUS} { return new Symbol(sym.MINUS, yytext());}
-{TIMES} { return new Symbol(sym.TIMES, yytext());}
-{DIVIDE} { return new Symbol(sym.DIVIDE, yytext());}
-{LPAREN} { return new Symbol(sym.LPAREN, yytext());}
-{RPAREN} { return new Symbol(sym.RPAREN, yytext());}
+{ID} { return new Symbol(Sym.ID, yytext());}
+{PLUS} { return new Symbol(Sym.PLUS, yytext());}
+{MINUS} { return new Symbol(Sym.MINUS, yytext());}
+{TIMES} { return new Symbol(Sym.TIMES, yytext());}
+{DIVIDE} { return new Symbol(Sym.DIVIDE, yytext());}
+{LPAREN} { return new Symbol(Sym.LPAREN, yytext());}
+{RPAREN} { return new Symbol(Sym.RPAREN, yytext());}

@@ -4,7 +4,7 @@
 
 import java_cup.runtime.Symbol;
 
-class sym {
+class Sym {
   public static final int error = -1;
   public static final int EOF = 0;
   public static final int ID = 1;
@@ -672,50 +672,50 @@ class Yylex implements java_cup.runtime.Scanner {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1:
             System.out.println("match: --"+zzToPrintable(yytext())+"--");
-            System.out.println("action [35] { return new Symbol(sym.LPAREN, yytext()); }");
-            { return new Symbol(sym.LPAREN, yytext());
+            System.out.println("action [35] { return new Symbol(Sym.LPAREN, yytext()); }");
+            { return new Symbol(Sym.LPAREN, yytext());
             }
           // fall through
           case 8: break;
           case 2:
             System.out.println("match: --"+zzToPrintable(yytext())+"--");
-            System.out.println("action [36] { return new Symbol(sym.RPAREN, yytext()); }");
-            { return new Symbol(sym.RPAREN, yytext());
+            System.out.println("action [36] { return new Symbol(Sym.RPAREN, yytext()); }");
+            { return new Symbol(Sym.RPAREN, yytext());
             }
           // fall through
           case 9: break;
           case 3:
             System.out.println("match: --"+zzToPrintable(yytext())+"--");
-            System.out.println("action [33] { return new Symbol(sym.TIMES, yytext()); }");
-            { return new Symbol(sym.TIMES, yytext());
+            System.out.println("action [33] { return new Symbol(Sym.TIMES, yytext()); }");
+            { return new Symbol(Sym.TIMES, yytext());
             }
           // fall through
           case 10: break;
           case 4:
             System.out.println("match: --"+zzToPrintable(yytext())+"--");
-            System.out.println("action [31] { return new Symbol(sym.PLUS, yytext()); }");
-            { return new Symbol(sym.PLUS, yytext());
+            System.out.println("action [31] { return new Symbol(Sym.PLUS, yytext()); }");
+            { return new Symbol(Sym.PLUS, yytext());
             }
           // fall through
           case 11: break;
           case 5:
             System.out.println("match: --"+zzToPrintable(yytext())+"--");
-            System.out.println("action [32] { return new Symbol(sym.MINUS, yytext()); }");
-            { return new Symbol(sym.MINUS, yytext());
+            System.out.println("action [32] { return new Symbol(Sym.MINUS, yytext()); }");
+            { return new Symbol(Sym.MINUS, yytext());
             }
           // fall through
           case 12: break;
           case 6:
             System.out.println("match: --"+zzToPrintable(yytext())+"--");
-            System.out.println("action [34] { return new Symbol(sym.DIVIDE, yytext()); }");
-            { return new Symbol(sym.DIVIDE, yytext());
+            System.out.println("action [34] { return new Symbol(Sym.DIVIDE, yytext()); }");
+            { return new Symbol(Sym.DIVIDE, yytext());
             }
           // fall through
           case 13: break;
           case 7:
             System.out.println("match: --"+zzToPrintable(yytext())+"--");
-            System.out.println("action [30] { return new Symbol(sym.ID, yytext()); }");
-            { return new Symbol(sym.ID, yytext());
+            System.out.println("action [30] { return new Symbol(Sym.ID, yytext()); }");
+            { return new Symbol(Sym.ID, yytext());
             }
           // fall through
           case 14: break;
