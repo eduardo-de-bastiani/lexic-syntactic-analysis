@@ -1,25 +1,21 @@
-%%
+import java_cup.runtime.Symbol;
 
-%class Lexer
-%unicode
+%%
 %cup
+%class Lexer
+%debug
 
-%{
-
-  int num;
-%}
-
-DIGIT = [0-9]
+Digito = [0-9]
+Int = {Digito}*
 
 %%
 
-"+"           { return sym.PLUS; }
-"-"           { return sym.MINUS; }
-"*"           { return sym.TIMES; }
-"/"           { return sym.DIVIDE; }
-"("           { return sym.LPAREN; }
-")"           { return sym.RPAREN; }
-{DIGIT}+      { num = Integer.parseInt(yytext()); return sym.NUMBER; }
-[ \t\n\r]+    { /* Ignorar espaços em branco */ }
-
-.             { System.err.println("Caractere inválido: " + yytext()); }
+[\t\r\n ]+ { /* Ignorar espaços em branco e novas linhas */ }
+{Int} { return new Symbol(Sym.ID, Integer.parseInt(yytext())); }
+"(" { return new Symbol(Sym.LPAREN); }
+")" { return new Symbol(Sym.RPAREN); }
+"+" { return new Symbol(Sym.PLUS); }
+"-" { return new Symbol(Sym.MINUS); }
+"*" { return new Symbol(Sym.TIMES); }
+"/" { return new Symbol(Sym.DIVIDE); }
+<<EOF>> { return new Symbol(Sym.EOF); }

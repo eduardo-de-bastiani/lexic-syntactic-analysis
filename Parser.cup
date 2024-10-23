@@ -1,33 +1,39 @@
-parser code {
-  import java_cup.runtime.Symbol;
-  import java.util.Stack;
+import java_cup.runtime.*;
+import java.util.*;
+import java.io.*;
 
-  public class Parser {
+parser code {:
     public static void main(String[] args) throws Exception {
-      Lexer lexer = new Lexer(System.in);
-      parser p = new parser(lexer);
-      p.parse();
+        Lexer lexer = new Lexer(new InputStreamReader(System.in));
+        parser p = new parser(lexer);
+        p.parse();
     }
-  }
-}
+:}
 
 terminal PLUS, MINUS, TIMES, DIVIDE, LPAREN, RPAREN;
-terminal Integer NUMBER;
+terminal int ID;
 
-non terminal Expr E, Term T, Factor F;
+non terminal Integer E, T, F;
 
 precedence left PLUS, MINUS;
 precedence left TIMES, DIVIDE;
 
 start with E;
 
-E ::= T
-     | E PLUS T   {: System.out.println("Soma: " + ($E.result + $T.result)); :}
-     | E MINUS T  {: System.out.println("Subtração: " + ($E.result - $T.result)); :};
+E ::=
+    E:e PLUS T:t {: RESULT = (int) e + (int) t; :}
+        | E:e MINUS T:t {: RESULT = (int) e - (int) t; :}
+        | T:t {: RESULT = t; :}
+    EOF
+    ;
 
-T ::= F
-     | T TIMES F  {: System.out.println("Multiplicação: " + ($T.result * $F.result)); :}
-     | T DIVIDE F {: System.out.println("Divisão: " + ($T.result / $F.result)); :};
+T ::=
+    T:t TIMES F:f {: RESULT = (int) t * (int) f; :}
+        | T:t DIVIDE F:f {: RESULT = (int) t / (int) f; :}
+        | F:f {: RESULT = f; :}
+    ;
 
-F ::= LPAREN E RPAREN {: RESULT = $E.result; :}
-     | NUMBER         {: RESULT = $NUMBER.intValue(); :};
+F ::=
+    LPAREN E:e RPAREN {: RESULT = e; :}
+    | ID:i {: RESULT = i; :}
+    ;
