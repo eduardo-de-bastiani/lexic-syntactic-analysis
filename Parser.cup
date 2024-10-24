@@ -24,7 +24,6 @@ E ::=
     E:e PLUS T:t {: RESULT = (int) e + (int) t; :}
         | E:e MINUS T:t {: RESULT = (int) e - (int) t; :}
         | T:t {: RESULT = t; :}
-    EOF
     ;
 
 T ::=
