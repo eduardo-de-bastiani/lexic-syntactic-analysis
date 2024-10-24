@@ -5,13 +5,12 @@ import java_cup.runtime.Symbol;
 %class Lexer
 %debug
 
-Digito = [0-9]
-Int = {Digito}*
+Digito = [0-9]+
 
 %%
 
-[\t\r\n ]+ { /* Ignorar espaços em branco e novas linhas */ }
-{Int} { return new Symbol(Sym.ID, Integer.parseInt(yytext())); }
+[\t\r\n ]+ {}
+{Digito} { return new Symbol(Sym.ID, Integer.parseInt(yytext())); }
 "(" { return new Symbol(Sym.LPAREN); }
 ")" { return new Symbol(Sym.RPAREN); }
 "+" { return new Symbol(Sym.PLUS); }
